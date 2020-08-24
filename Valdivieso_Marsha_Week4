@@ -1,0 +1,58 @@
+'''
+    Author: Marsha Valdivieso
+    Date: 07/10/2020
+    Description: Create a table that displays stock, share number, earning/loss and
+                yearly earning loss.
+'''
+
+from datetime import datetime
+
+#setting functions to get gains and loss
+def earnings_loss(stock_data):
+	earn_loss = round(((stock_data['current_value']-stock_data['purchase_price'])*stock_data['num_shares']),2)
+	return earn_loss
+
+def yearly_loss(stock_data):
+	purchase_day = datetime.strptime(stock_data["purchase_date"], "%m/%d/%Y")
+	days_since  = abs(datetime.today()-purchase_day.days)
+	yearly_losses = (
+		(stock_data["current_value"] - stock_data["purchase_price"])
+            /(stockName["purchase_price"]/(days_since)))
+	return yearly_losses
+
+def yearly_loss_per(stock_data):
+	purchase_day = datetime.strptime(stock_data["purchase_date"], "%m/%d/%Y")
+	days_since  = abs(datetime.today()-purchase_day.days)
+	yearly_losses_per = ((
+		(stock_data["current_value"] - stock_data["purchase_price"])
+	/(stockName["purchase_price"]/(days_since)))*100)
+	return yearly_losses_per
+
+
+# setting up nested dictionary
+stocks = {"GOOGLE" : {"num_shares" : 125, "purchase_price" : 772.88,"current_value" : 941.53,
+                      "purchase_date" : "08/01/2017"},
+            "MSFT" : {"num_shares" : 85, "purchase_price" : 56.60, "current_value" : 73.04,
+                      "purchase_date" : "08/01/2017"},
+            "RDS-A" : {"num_shares" : 400, "purchase_price" : 49.58, "current_value" : 55.74,
+                       "purchase_date": "08/01/2017"},
+            "AIG" : {"num_shares" : 235, "purchase_price" : 54.21, "current_value" : 65.27,
+                     "purchase_date" : "08/01/2017"},
+            "FB" :  {"num_shares" : 130, "purchase_price" : 124.31, "current_value" : 175.45,
+                     "purchase_date" : "08/01/2017"},
+            "M" : {"num_shares":425, "purchase_price" : 30.30, "current_value" : 23.98,
+                   "purchase_date" : "01/10/2018"},
+            "F" : {"num_shares": 85, "purchase_price" : 12.58, "current_value" : 10.95,
+                   "purchase_date" : "02/17/2018"},
+            "IBM" : {"num_shares" : 80, "purchase_price" : 150.37, "current_value" : 145.30,
+                     "purchase_date" : "05/12/2018"}}
+
+#stock information to be displayed in a table form
+print("-"*60)
+print("\t\t\tStock ownership for Bob Smith")
+print("-"*60)
+print(" Stock\t " "Share #" "\tEarning/Loss " "\tYearly Earning Loss ")
+print("-"*60)
+current_date = date.today()
+for stock in stocks:
+    print (stock + "\t\t" + str(stocks[stock]["num_shares"]) + "\t" + str(earnings_loss(stocks[stock])) + "\t" + str(yearly_loss(stocks[stock])))
