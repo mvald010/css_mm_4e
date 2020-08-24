@@ -1,0 +1,34 @@
+"""
+    Author:Marsha Valdivieso
+    Date: 08/05/2020
+    Description: The program will read the stock data from the JSON file and ouput a line graph displaying 
+                    a portfolio showing the value of a clients stock over time. 
+"""
+
+import json
+import matplotlib.pyplot as plt
+
+from stock import*
+from datetime import datetime
+
+#Declare variables
+stock_list = []
+price_over_time = []
+
+
+file_path = 'C:\Users\mvald\Desktop\python_work\AllStocks.json'
+#read the JSON file  and store information for each individual stock
+with open(file_path) as json_file
+    data_set = json.load(json_file)
+    for stocks in data_set
+        if stocks['Symbol'] not in stock_list:
+            addStocks = stock(stocks['Symbol'],stocks['Date'], stocks['Close'])
+            stock_list[stocks['Symbol']] = addStocks
+        print(stocks['Symbol'], stocks['Date'], stocks['Close'])
+
+plt.plot('Symbol', map(str, range(2015, 2018))
+plt.plot('Date')
+plt.xlabel('Dates')
+plt.ylabel('Stock Price Per Share')
+
+plt.savefig('simplePlot.png')
