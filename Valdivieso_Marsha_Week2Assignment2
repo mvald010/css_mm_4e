@@ -1,0 +1,57 @@
+'''
+    Author: Marsha Valdivieso
+    Date:6/28/2020
+    Description: Create two tables. First table consisting of 4 list. Second 
+    table should calculate how much an investor has earned or lost. Below that 
+    display which stocks had highest and least increase.  
+
+'''    
+
+#data to be displayed
+stock_symbol = ["GOOGLE", "MSFT", "RDS-A", "AIG", "FB"]
+num_shares = [25, 85, 400, 235, 130]
+purchase_price = [772.88, 56.60, 49.58, 54.21, 124.31]
+current_value = [941.53, 73.04, 55.74, 65.27, 175.45]
+
+#display input
+print("--------------------------------------------------------------")
+print("Stock Symbol" + "\t" + "No Shares" + "\t" + "Purchase Price" + "\t" +
+ "Current Value")
+print("--------------------------------------------------------------")
+counter = 0
+for stock in stock_symbol :
+    print((stock_symbol[counter]) + "\t" + "\t" + (str(num_shares[counter])) 
+    + "\t" + "\t" +(str(purchase_price[counter])) + "\t" + "\t" +
+    (str(current_value[counter])))
+    counter = counter + 1
+print()
+print()
+print()
+#data to be displayed
+stock_symbol = ["GOOGLE", "MSFT", "RDS-A", "AIG", "FB"]
+num_shares = [25, 85, 400, 235, 130]
+earning_loss = [4216.25, 1397.40, 2464.00, 2599.10, 6648.20]
+
+#calculations
+highest_increase_index = earning_loss.index(max(earning_loss))
+highest_increase = stock_symbol[highest_increase_index]
+least_increase_index = earning_loss.index(min(earning_loss))
+least_increase = stock_symbol[least_increase_index]
+
+#display output
+print("--------------------------------------------------------------")
+print("Stock Ownership for Bob Smith")
+print("--------------------------------------------------------------")
+print("Stock" + "\t" + "Share #" + "\t" + "Earnings/Loss")
+print("--------------------------------------------------------------")
+counter = 0
+for stock in stock_symbol :
+    i = stock_symbol.index(stock)
+    print((stock_symbol[counter]) + "\t" + (str(num_shares[counter])) 
+    + "\t" + (str(earning_loss[counter])))
+    counter = counter + 1
+   
+print(f" The stock with the highest increase in value in your portfolio on a per-share basis is : {highest_increase} ") 
+print(f" The stock with least decrease in value in your portfolio on a per-share basis is : {least_increase}")
+
+
